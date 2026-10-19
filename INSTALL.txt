@@ -1,0 +1,241 @@
+CHEMICAL SCANNER - INSTALLATION & USE GUIDE
+=============================================
+
+DOWNLOAD & SETUP
+================
+
+1. Download ChemicalScanner_Portable.zip from GitHub Releases
+   (~121 MB)
+
+2. Right-click the ZIP file and select "Extract All..."
+
+3. Choose a location (Desktop, Documents, etc.)
+
+4. Click "Extract"
+
+You now have:
+- ChemicalScanner.exe (the application)
+- README.txt (this file)
+- Launch.bat (quick launcher)
+
+
+HOW TO RUN
+==========
+
+Option 1 (Recommended):
+- Double-click ChemicalScanner.exe
+
+Option 2:
+- Double-click Launch.bat
+
+First run may take 5-10 seconds to start.
+Subsequent runs will be faster.
+
+
+HOW TO USE
+==========
+
+Step 1: Select Your File
+------------------------
+- Click "Browse" button
+- Select your CSV or Excel file
+- File must have columns with:
+  * Product IDs (e.g., "ProductId")
+  * PDF URLs (e.g., "Url")
+
+Step 2: Map Columns
+-------------------
+- Select "Product ID Column" from dropdown
+  Example: "ProductId"
+
+- Select "PDF URL Column" from dropdown
+  Example: "Url"
+
+- See confirmation at bottom of screen
+
+Step 3: Choose Output Location
+------------------------------
+- Click "Select Output Folder"
+- Pick where to save results (e.g., Desktop)
+
+Step 4: Scan
+-----------
+- Click "Scan" button
+- Wait for completion (takes a few seconds per PDF)
+- Status shows "Scan complete" when done
+- Results CSV opens automatically
+
+
+INPUT FILE FORMAT
+=================
+
+Your CSV or Excel file should look like:
+
+ProductId,Url,ProductName
+CHEM-001,https://example.com/datasheet1.pdf,Cleaner
+CHEM-002,https://example.com/datasheet2.pdf,Polish
+
+Column names must match exactly.
+
+
+OUTPUT RESULTS
+==============
+
+You get a CSV file with columns:
+
+- ProductId: Your product identifier
+- chemical_keywords_found: "Yes" or "No"
+- chemicals_found: List of keywords detected
+- keyword_occurrences: How many times each keyword appears
+- pdf_url: Original URL processed
+- status: success/error indicator
+
+
+WHAT IT SCANS FOR
+=================
+
+Searches for 200+ German chemical keywords including:
+
+- Solvents: Isopropanol, Salzsäure, Ammoniak
+- Sprays: Kontaktspray, Frostspray, Insektenspray
+- Adhesives: Lötpaste, Sekundenkleber, Epoxidharz
+- Personal Care: Nagellack, Blondierpulver, Duftöl
+- Cleaning: Desinfektionsmittel, Waschmittel, etc.
+
+And many more chemical products...
+
+
+SYSTEM REQUIREMENTS
+===================
+
+✓ Windows 7, 8, 10, or 11
+✓ 64-bit operating system
+✓ 512 MB RAM (1 GB recommended)
+✓ Internet connection (for PDF downloads)
+✓ ~200 MB free disk space
+
+You do NOT need:
+✗ Python installation
+✗ Any other software
+
+
+TROUBLESHOOTING
+===============
+
+Q: App won't start?
+A: Try running Launch.bat instead
+   Or check that Windows 7+ is installed
+
+Q: "Windows Defender SmartScreen" appears?
+A: Click "More info" then "Run anyway"
+   This is normal for unsigned programs
+
+Q: Error "File could not be read"?
+A: Make sure file is .csv or .xlsx format
+   Try opening in Excel first to verify
+
+Q: Column dropdown is empty?
+A: Check that CSV file has headers in first row
+   Try re-saving file if opening Excel file
+
+Q: No keywords found in PDF?
+A: PDF might be in English (app searches German only)
+   Or PDF might be an image (text not extractable)
+   Try different PDF to test
+
+Q: App is scanning very slowly?
+A: Large PDFs take time to download & process
+   Scanning 100+ products takes 5-30 minutes
+   Check internet connection
+
+
+EXAMPLE
+=======
+
+If your input CSV is:
+
+ProductId,Url
+001,https://www.example.com/safety-data-sheets/001.pdf
+002,https://www.example.com/safety-data-sheets/002.pdf
+
+You'll get output like:
+
+ProductId,chemical_keywords_found,chemicals_found
+001,Yes,Isopropanol; Nagellack
+002,No,
+
+
+TIPS
+====
+
+- Keep PDF URLs active and accessible
+- Test with small batch first (5-10 products)
+- Make sure CSV is saved with UTF-8 encoding
+- Column names must match exactly
+- Internet speed affects download time
+
+
+NEED HELP?
+==========
+
+Check GitHub repository for:
+- Full documentation (README.md)
+- Video tutorial (if available)
+- FAQ section
+- Report issues on GitHub Issues page
+
+
+WHAT'S INCLUDED
+===============
+
+This is a complete, standalone application:
+- No Python installation needed
+- No additional downloads needed
+- All dependencies included
+- Self-contained executable
+
+
+ADVANCED
+========
+
+For users with technical knowledge:
+
+To modify keywords or settings:
+- Source code available on GitHub
+- Edit chemical_scanner/scripts/pdf_chemical_scan.py
+- Rebuild with: python build_installer.ps1
+
+
+VERSION
+=======
+
+Chemical Scanner v1.0.0
+Released: October 2026
+Windows 7+ compatible (64-bit)
+
+
+FOR DEVELOPERS
+==============
+
+To rebuild from source:
+
+1. Install Python 3.8+
+2. Download source code from GitHub
+3. Run: pip install -r requirements.txt
+4. Run GUI: python chemical_scanner/app.py
+5. Build EXE: cd chemical_scanner && .\build_installer.ps1
+
+
+SUPPORT
+=======
+
+GitHub Repository:
+https://github.com/yourusername/chemical-scanner
+
+Report Issues:
+https://github.com/yourusername/chemical-scanner/issues
+
+
+---
+Last Updated: October 2026
+Questions? Check GitHub repository for additional documentation.
