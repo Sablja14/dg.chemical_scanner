@@ -17,7 +17,7 @@ A professional Windows desktop application for screening German-language product
 
 ### Latest Release
 
-Choose your preferred format:
+Choose your preferred format (Both versions requires you to unblock them from SmartScreen warnings -> Right Click -> And on attributes click "UNBLOCK") :
 
 1. **ChemicalScanner_Portable.zip** (121 MB) - **Recommended**
    - Extract and run immediately
@@ -42,7 +42,6 @@ Get the latest version from [Releases](https://github.com/yourusername/chemical-
 
 ### Step 3: Run
 - Double-click **ChemicalScanner.exe**
-- Or double-click **Launch.bat**
 
 ### Step 4: Scan
 1. Click **"Browse"** and select your CSV/Excel file
