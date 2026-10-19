@@ -244,5 +244,5 @@ All processing is multi-threaded for speed and keeps the UI responsive.
 **Version:** 1.0.0  
 **Release Date:** October 2026  
 **Compatible With:** Windows 7, 8, 10, 11 (64-bit)  
-**License:** [Your License]  
-**Author:** [Your Name/Organization]
+**License:** Ownership of Digitec Galaxus. No redistribution allowed, unless explicitly allowed by Scraping Manager Team members of Digitec Galaxus.
+**Author:** Milan Poznanovic / Digitec Galaxus
