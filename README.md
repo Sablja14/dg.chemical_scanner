@@ -1,6 +1,6 @@
 # Chemical Scanner
 
-A professional Windows desktop application for screening German-language product datasheets (SDS/PDF files) against regulated chemical keywords. Designed for compliance screening and product safety analysis.
+A Windows desktop application for screening German-language product datasheets (SDS/PDF files) against regulated chemical keywords. Designed for compliance screening and product safety analysis.
 
 ## 🎯 Features
 
@@ -8,7 +8,7 @@ A professional Windows desktop application for screening German-language product
 - **Batch Processing** - Scan entire CSV/Excel files with one click
 - **PDF Download** - Automatically downloads and processes PDF files from URLs
 - **Keyword Counting** - Shows how many times each keyword appears in each document
-- **Professional GUI** - Clean, intuitive desktop interface
+- **Professional User-Interface** - Clean, intuitive desktop interface
 - **CSV Export** - Detailed reports with all findings
 - **No Setup Required** - Self-contained executable, no Python installation needed
 - **Multi-threaded** - Scans multiple PDFs in parallel for speed
@@ -81,14 +81,6 @@ The app generates a CSV with these columns:
 | keywords_phrases | Text snippets containing keywords |
 | status | Processing status |
 
-## 💻 System Requirements
-
-- **OS:** Windows 7, 8, 10, 11 (64-bit)
-- **RAM:** 512 MB minimum (1 GB recommended)
-- **Disk Space:** 200 MB + space for downloaded PDFs
-- **Internet:** Required for downloading PDFs
-- **Python:** NOT required (included in the app)
-
 ## ✨ Chemical Keywords
 
 Searches for 200+ German chemical terms including:
@@ -107,9 +99,7 @@ Searches for 200+ German chemical terms including:
 
 See complete list in [pdf_chemical_scan.py](./chemical_scanner/scripts/pdf_chemical_scan.py#L36)
 
-## 🛠️ Build from Source
-
-For developers who want to modify the app:
+To modify the app:
 
 ### Requirements
 - Python 3.8 or higher
@@ -182,11 +172,9 @@ chemical_scanner/
 ## 🐛 Troubleshooting
 
 ### "Windows Defender SmartScreen" Warning
-**This is normal** for unsigned executables on first run.
-- Click "More info"
-- Click "Run anyway"
+UNBLOCK the app in properties when right clicking the .exe
 
-The warning appears because the EXE isn't code-signed. To remove it permanently would require purchasing a code-signing certificate.
+The warning appears because the EXE isn't code-signed (Code signing costs 300 EUR). 
 
 ### App Takes 5-10 Seconds to Start
 **Normal on first run** - PyInstaller extracts bundled files. Subsequent launches are much faster.
@@ -196,6 +184,7 @@ The warning appears because the EXE isn't code-signed. To remove it permanently 
 - Verify the URL works in your browser
 - Try increasing timeout in code (change 	imeout=30 to 	imeout=60)
 - Some PDFs may be behind authentication or firewall-blocked
+- Contact Scraping Manager Team
 
 ### Excel Files Won't Load
 - Use .xlsx or .xls extension
