@@ -1,6 +1,6 @@
 # Chemical Scanner
 
-A Windows desktop application for screening German-language product datasheets (SDS/PDF files) against regulated chemical keywords. Designed for compliance screening and product safety analysis.
+A professional Windows desktop application for screening German-language product datasheets (SDS/PDF files) against regulated chemical keywords. Designed for compliance screening and product safety analysis.
 
 ## 🎯 Features
 
@@ -8,16 +8,18 @@ A Windows desktop application for screening German-language product datasheets (
 - **Batch Processing** - Scan entire CSV/Excel files with one click
 - **PDF Download** - Automatically downloads and processes PDF files from URLs
 - **Keyword Counting** - Shows how many times each keyword appears in each document
-- **Professional User-Interface** - Clean, intuitive desktop interface
-- **CSV Export** - Detailed reports with all findings
+- **H/P/EUH Statement Detection** - Detects CLP hazard and precautionary statement codes (e.g., H225, P210, EUH066)
+- **Professional GUI** - Clean, intuitive desktop interface
+- **Excel Export** - Detailed reports as .xlsx (CSV still supported in CLI)
 - **No Setup Required** - Self-contained executable, no Python installation needed
 - **Multi-threaded** - Scans multiple PDFs in parallel for speed
+- **Live Progress** - Shows scanned rows, percentage, and total URL count during processing
 
 ## 📥 Download
 
 ### Latest Release
 
-Choose your preferred format (Both versions requires you to unblock them from SmartScreen warnings -> Right Click -> And on attributes click "UNBLOCK") :
+Choose your preferred format:
 
 1. **ChemicalScanner_Portable.zip** (121 MB) - **Recommended**
    - Extract and run immediately
@@ -42,15 +44,16 @@ Get the latest version from [Releases](https://github.com/yourusername/chemical-
 
 ### Step 3: Run
 - Double-click **ChemicalScanner.exe**
+- Or double-click **Launch.bat**
 
 ### Step 4: Scan
 1. Click **"Browse"** and select your CSV/Excel file
 2. Map columns:
    - Select which column has Product IDs
    - Select which column has PDF URLs
-3. Click **"Select Output Folder"** and choose where to save results
+3. Click **"Browse"** under **Output file** and choose the report filename/location
 4. Click **"Scan"** and wait for completion
-5. Results open automatically in CSV format
+5. Results open automatically in Excel format
 
 ## 📋 Input File Format
 
@@ -69,7 +72,7 @@ Your CSV or Excel file should have these columns:
 
 ## 📊 Output Report
 
-The app generates a CSV with these columns:
+The app generates an Excel report (.xlsx) with these columns:
 
 | Column | Description |
 |--------|-------------|
@@ -77,9 +80,18 @@ The app generates a CSV with these columns:
 | chemical_keywords_found | "Yes" or "No" |
 | chemicals_found | List of keywords found |
 | keyword_occurrences | Count per keyword (e.g., "Isopropanol:5; Nagellack:2") |
+| gefahrstoff codes | Whitelisted CLP/REACH codes found in PDF text (e.g., "H225; P210; EUH066") |
 | pdf_url | Original URL processed |
 | keywords_phrases | Text snippets containing keywords |
 | status | Processing status |
+
+## 💻 System Requirements
+
+- **OS:** Windows 7, 8, 10, 11 (64-bit)
+- **RAM:** 512 MB minimum (1 GB recommended)
+- **Disk Space:** 200 MB + space for downloaded PDFs
+- **Internet:** Required for downloading PDFs
+- **Python:** NOT required (included in the app)
 
 ## ✨ Chemical Keywords
 
@@ -99,7 +111,9 @@ Searches for 200+ German chemical terms including:
 
 See complete list in [pdf_chemical_scan.py](./chemical_scanner/scripts/pdf_chemical_scan.py#L36)
 
-To modify the app:
+## 🛠️ Build from Source
+
+For developers who want to modify the app:
 
 ### Requirements
 - Python 3.8 or higher
@@ -172,9 +186,11 @@ chemical_scanner/
 ## 🐛 Troubleshooting
 
 ### "Windows Defender SmartScreen" Warning
-UNBLOCK the app in properties when right clicking the .exe
+**This is normal** for unsigned executables on first run.
+- Click "More info"
+- Click "Run anyway"
 
-The warning appears because the EXE isn't code-signed (Code signing costs 300 EUR). 
+The warning appears because the EXE isn't code-signed. To remove it permanently would require purchasing a code-signing certificate.
 
 ### App Takes 5-10 Seconds to Start
 **Normal on first run** - PyInstaller extracts bundled files. Subsequent launches are much faster.
@@ -184,7 +200,6 @@ The warning appears because the EXE isn't code-signed (Code signing costs 300 EU
 - Verify the URL works in your browser
 - Try increasing timeout in code (change 	imeout=30 to 	imeout=60)
 - Some PDFs may be behind authentication or firewall-blocked
-- Contact Scraping Manager Team
 
 ### Excel Files Won't Load
 - Use .xlsx or .xls extension
@@ -200,6 +215,11 @@ The warning appears because the EXE isn't code-signed (Code signing costs 300 EU
 - Make sure your CSV has the columns you're trying to select
 - Column names are case-sensitive
 - Try re-saving the file as CSV if using Excel
+
+### "Permission denied" when saving report
+- Make sure the output report file is not already open in Excel
+- Pick an output filename (not just a folder)
+- Save to a writable folder (for example your Documents or Downloads folder)
 
 ## 📄 License
 
@@ -244,5 +264,5 @@ All processing is multi-threaded for speed and keeps the UI responsive.
 **Version:** 1.0.0  
 **Release Date:** October 2026  
 **Compatible With:** Windows 7, 8, 10, 11 (64-bit)  
-**License:** Ownership of Digitec Galaxus. No redistribution allowed, unless explicitly allowed by Scraping Manager Team members of Digitec Galaxus.
-**Author:** Milan Poznanovic / Digitec Galaxus
+**License:** [Your License]  
+**Author:** [Your Name/Organization]

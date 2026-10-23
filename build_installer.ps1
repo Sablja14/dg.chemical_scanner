@@ -27,11 +27,13 @@ if (Test-Path $distDir) { Remove-Item -Recurse -Force $distDir }
 if (Test-Path $buildDir) { Remove-Item -Recurse -Force $buildDir }
 
 Write-Host "Building Chemical Scanner executable..."
+$iconPath = Join-Path $PSScriptRoot "assets\chemical_chemistry_laboratory_icon_192522.ico"
 & $pythonExe -m PyInstaller `
     --windowed `
     --onefile `
     --clean `
     --name "ChemicalScanner" `
+    --icon $iconPath `
     --distpath $distDir `
     --workpath $buildDir `
     --paths $PSScriptRoot `
@@ -50,6 +52,7 @@ Write-Host "Building Chemical Scanner executable..."
     --hidden-import openpyxl `
     --hidden-import tqdm `
     --add-data "scripts;scripts" `
+    --add-data "assets;assets" `
     app.py
 
 Write-Host "Build complete. Executable: $distDir\ChemicalScanner.exe"
